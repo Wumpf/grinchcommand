@@ -1,0 +1,9 @@
+webglbuild
+Temp
+Logs
+Library
+UserSettings
+obj
+*.csproj
+*.sln
+.vscode
