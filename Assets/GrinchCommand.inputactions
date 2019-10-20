@@ -9,7 +9,7 @@
                     "name": "FireLeft",
                     "type": "Button",
                     "id": "425477c8-10e2-4009-a0dd-d6a69e9c0717",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -17,7 +17,7 @@
                     "name": "FireMiddle",
                     "type": "Button",
                     "id": "9eb39106-06fe-4042-a1dc-8d7393389b40",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },

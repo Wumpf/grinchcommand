@@ -14,42 +14,41 @@ public class GrapplingHook : MonoBehaviour
 
     private State state = State.Idle;
 
-    private Vector3 target;
+    private Vector3 targetDirection;
 
     public float MoveSpeed = 10.0f;
+    private const float maxHeight = 2.4f;
 
     void FixedUpdate()
     {
         if (state == State.Idle)
             return;
 
-        var toTarget = target - transform.position;
-        float distance = toTarget.magnitude;
-        if (distance < 0.02f)
+        if (transform.position.y > maxHeight)
+            state = State.Retracting;
+
+        if (state == State.Retracting &&
+            Vector3.Distance(transform.parent.position, transform.position) < 0.01f)
         {
-            if (state == State.MovingToTarget)
-            {
-                target = transform.parent.position;
-                state = State.Retracting;
-            }
-            else
-            {
-                state = State.Idle;
-                return;
-            }
+            state = State.Idle;
+            return;
         }
 
-        float movement = Mathf.Min(1.0f, MoveSpeed * Time.fixedDeltaTime / distance);
-        transform.Translate(toTarget * movement);
+        if (state == State.Retracting)
+            transform.Translate(-targetDirection * MoveSpeed * Time.fixedDeltaTime);
+        else
+            transform.Translate(targetDirection * MoveSpeed * Time.fixedDeltaTime);
     }
 
-    public void OnFire()
+    public void OnFire(InputAction.CallbackContext context)
     {
-        if (state != State.Idle)
-            return;
-
-        var mousePos = Mouse.current.position.ReadValue();
-        target = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y));
-        state = State.MovingToTarget;
+        if (state == State.Idle && context.phase == InputActionPhase.Started)
+        {
+            var mousePos = Mouse.current.position.ReadValue();
+            targetDirection = (Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y)) - transform.parent.position).normalized;
+            state = State.MovingToTarget;
+        }
+        else if (state == State.MovingToTarget && context.phase == InputActionPhase.Canceled)
+            state = State.Retracting;
     }
 }
