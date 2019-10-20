@@ -95,6 +95,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 1
   PresentSpawnFrequency: 0.6
-  PresentSpawnFrequencyJitter: 0.2
+  PresentSpawnFrequencyJitter: 0.5
   PresentPrefab: {fileID: 4663486875942469286, guid: 24bc4c12f7e73894d83763e76eb289d3,
     type: 3}
