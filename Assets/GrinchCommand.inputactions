@@ -4,8 +4,67 @@
         {
             "name": "Player",
             "id": "a31f64bb-6556-40f2-bf6c-23be10cccdb9",
-            "actions": [],
-            "bindings": []
+            "actions": [
+                {
+                    "name": "FireLeft",
+                    "type": "Button",
+                    "id": "425477c8-10e2-4009-a0dd-d6a69e9c0717",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "FireMiddle",
+                    "type": "Button",
+                    "id": "9eb39106-06fe-4042-a1dc-8d7393389b40",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "FireRight",
+                    "type": "Button",
+                    "id": "ea19bc4d-aa0c-488b-9fb7-b37a791db8c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bc4a7a56-5df0-4c00-9412-179fd97cb632",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FireLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93528245-b1a9-426c-aa20-cb074a596bcd",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FireMiddle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4210cf6d-4dfe-44a6-8758-b0a6b7f788f5",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FireRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         },
         {
             "name": "UI",
