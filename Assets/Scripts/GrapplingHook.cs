@@ -17,7 +17,7 @@ public class GrapplingHook : MonoBehaviour
     private Vector3 targetDirection;
 
     public float MoveSpeed = 10.0f;
-    private const float maxHeight = 2.4f;
+    private const float maxHeight = 2.0f;
 
     void FixedUpdate()
     {
