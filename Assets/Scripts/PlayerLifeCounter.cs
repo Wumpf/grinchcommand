@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class PlayerLifeCounter : MonoBehaviour
 {
+    public GameState GameState;
+
     public Text Text;
     public GameObject FirstLifeIcon;
     public int NumLifesAtStart = 7;
@@ -32,6 +34,9 @@ public class PlayerLifeCounter : MonoBehaviour
 
     public void OnLifeLost()
     {
+        if (numLifesLeft <= 0)
+            return;
+
         --numLifesLeft;
         lifeIcons[numLifesLeft].SetActive(false);
         UpdateText();

@@ -14,7 +14,7 @@ public class SledSpawner : MonoBehaviour
     private float presentSpawnTimeMin => 1.0f / (SledSpawnFrequency * (1.0f - SledSpawnFrequencyJitter));
     private float presentSpawnTimeMax => 1.0f / (SledSpawnFrequency * (1.0f + SledSpawnFrequencyJitter));
 
-    void Start()
+    private void OnEnable()
     {
         StartCoroutine(SpawnSled());
     }
