@@ -11,9 +11,8 @@ public class Sled : MonoBehaviour
     private float presentSpawnTimeMin => 1.0f / (PresentSpawnFrequency * (1.0f - PresentSpawnFrequencyJitter));
     private float presentSpawnTimeMax => 1.0f / (PresentSpawnFrequency * (1.0f + PresentSpawnFrequencyJitter));
 
-    public GameObject PresentPrefab;
+    public GameObject[] PresentPrefabs;
 
-    private Random random = new Random();
 
     void Start()
     {
@@ -32,7 +31,7 @@ public class Sled : MonoBehaviour
         while (this.isActiveAndEnabled)
         {
             yield return new WaitForSeconds(Random.Range(presentSpawnTimeMin, presentSpawnTimeMax));
-            Instantiate(PresentPrefab, transform.position, Quaternion.identity);
+            Instantiate(PresentPrefabs[Random.Range(0, PresentPrefabs.Length)], transform.position, Quaternion.identity);
         }
     }
 }

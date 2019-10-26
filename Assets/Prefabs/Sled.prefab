@@ -47,8 +47,10 @@ MonoBehaviour:
   Speed: 1
   PresentSpawnFrequency: 0.6
   PresentSpawnFrequencyJitter: 0.5
-  PresentPrefab: {fileID: 4663486875942469286, guid: 24bc4c12f7e73894d83763e76eb289d3,
-    type: 3}
+  PresentPrefabs:
+  - {fileID: 4663486875942469286, guid: 24bc4c12f7e73894d83763e76eb289d3, type: 3}
+  - {fileID: 2517041497623881309, guid: 424019e4b672b9448bf419c40770c620, type: 3}
+  - {fileID: 2053526066600475334, guid: 0bcf7de2a589ccd4a9c985cce12f58b9, type: 3}
 --- !u!212 &7870867322606887531
 SpriteRenderer:
   m_ObjectHideFlags: 0
