@@ -32,10 +32,12 @@ public class SledSpawner : MonoBehaviour
     {
         while (this.isActiveAndEnabled)
         {
-            bool left = Random.value > 0.5f;
-            var spawnZone = left ? SpawnZoneLeft : SpawnZoneRight;
+            bool right = Random.value > 0.5f;
+            var spawnZone = right ? SpawnZoneRight : SpawnZoneLeft;
             var newSled = Instantiate(SledPrefab, RandomPositionInSpawnZone(spawnZone), Quaternion.identity);
-            newSled.GetComponent<Sled>().Speed *= left ? 1.0f : -1.0f;
+            newSled.GetComponent<Sled>().Speed *= right ? 1.0f : -1.0f;
+            if (right)
+                newSled.transform.localScale = new Vector3(-newSled.transform.localScale.x, newSled.transform.localScale.y, newSled.transform.localScale.z);
             yield return new WaitForSeconds(Random.Range(presentSpawnTimeMin, presentSpawnTimeMax));
         }
     }
