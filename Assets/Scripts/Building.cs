@@ -8,6 +8,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class Building : MonoBehaviour
 {
     public Sprite HappySprite;
+    public bool LooseLifeIfHitByPresent = false;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -19,5 +20,7 @@ public class Building : MonoBehaviour
         var light = GetComponent<Light2D>();
         if (light != null)
             light.enabled = true;
+        if (LooseLifeIfHitByPresent)
+            PlayerLifeCounter.Instance.OnLifeLost();
     }
 }
