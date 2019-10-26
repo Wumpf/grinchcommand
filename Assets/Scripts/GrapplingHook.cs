@@ -35,9 +35,9 @@ public class GrapplingHook : MonoBehaviour
         }
 
         if (state == State.Retracting)
-            transform.Translate(-targetDirection * MoveSpeed * Time.fixedDeltaTime);
+            transform.Translate(-targetDirection * MoveSpeed * Time.fixedDeltaTime, Space.World);
         else
-            transform.Translate(targetDirection * MoveSpeed * Time.fixedDeltaTime);
+            transform.Translate(targetDirection * MoveSpeed * Time.fixedDeltaTime, Space.World);
     }
 
     public void OnFire(InputAction.CallbackContext context)
