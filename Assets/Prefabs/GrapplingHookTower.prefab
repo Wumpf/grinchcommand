@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f022e33e31290ae4c980e69574e4297b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HappySprite: {fileID: 0}
+  HappySprite: {fileID: 21300000, guid: 61d430264ab094f4a85b8cbe516ed519, type: 3}
   LooseLifeIfHitByPresent: 0
 --- !u!212 &8801674659726186794
 SpriteRenderer:
