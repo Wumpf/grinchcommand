@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(SledSpawner))]
 [RequireComponent(typeof(PlayerLifeCounter))]
@@ -51,9 +52,9 @@ public class GameState : MonoBehaviour
         IntroScreen.SetActive(true);
     }
 
-    public void OnContinueButtonPressed()
+    public void OnContinueButtonPressed(InputAction.CallbackContext context)
     {
-        if (currentState == State.Game)
+        if (currentState == State.Game || context.phase != InputActionPhase.Started)
             return;
 
         IntroScreen.SetActive(false);
