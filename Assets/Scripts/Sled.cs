@@ -23,7 +23,7 @@ public class Sled : MonoBehaviour
     {
         transform.Translate(Speed * Time.deltaTime, 0, 0);
         float viewportX = Camera.main.WorldToViewportPoint(transform.position).x;
-        if (viewportX > 1.2f || viewportX < -0.2f)
+        if (viewportX > 1.2f || viewportX < -0.3f)
             Destroy(this.gameObject);
     }
 
