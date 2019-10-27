@@ -63,7 +63,8 @@ public class GameState : MonoBehaviour
         AdvanceCodeScreen.SetActive(false);
         BonusCodeScreen.SetActive(false);
 
-        playerLifeCounter.Restart();
+        if (currentState != State.StageTransition)
+            playerLifeCounter.Restart();
         currentState = State.Game;
 
         ClearPresentsAndSleds();
