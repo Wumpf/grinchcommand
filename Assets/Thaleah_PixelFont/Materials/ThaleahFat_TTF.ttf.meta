@@ -1,22 +1,21 @@
 fileFormatVersion: 2
-guid: 23f8e7e9db3eaab449460d4c1ba61756
+guid: 585188cdc4600544eb408bee749e4b3a
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 40
+  fontSize: 16
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
-  includeFontData: 0
-  fontName: Comic Sans MS
+  includeFontData: 1
+  fontName: ThaleahFat
   fontNames:
-  - Comic Sans MS
+  - ThaleahFat
   fallbackFontReferences: []
-  customCharacters: 1234567890xABCDEFGHIJKLMNOPQRSTUVWXZY !@/
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
-  shouldRoundAdvanceValue: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
