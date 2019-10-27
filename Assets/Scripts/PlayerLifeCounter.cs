@@ -24,7 +24,7 @@ public class PlayerLifeCounter : MonoBehaviour
         lifeIcons = new GameObject[NumLifesAtStart];
         lifeIcons[0] = FirstLifeIcon;
         for (int i=1; i<lifeIcons.Length; ++i)
-            lifeIcons[i] = Instantiate(lifeIcons[i-1], lifeIcons[i-1].transform.position + new Vector3(0.28f, 0, 1), Quaternion.identity);
+            lifeIcons[i] = Instantiate(lifeIcons[i-1], lifeIcons[i-1].transform.position + new Vector3(0.32f, 0, 1), Quaternion.identity);
 
         lifeBuildings = Object.FindObjectsOfType<Building>();
         foreach (var building in lifeBuildings)
