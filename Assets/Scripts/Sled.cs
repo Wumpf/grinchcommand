@@ -22,7 +22,8 @@ public class Sled : MonoBehaviour
     void Update()
     {
         transform.Translate(Speed * Time.deltaTime, 0, 0);
-        if (Camera.main.WorldToViewportPoint(transform.position).x * Mathf.Sign(Speed) > 1.0f)
+        float viewportX = Camera.main.WorldToViewportPoint(transform.position).x;
+        if (viewportX > 1.2f || viewportX < -0.2f)
             Destroy(this.gameObject);
     }
 

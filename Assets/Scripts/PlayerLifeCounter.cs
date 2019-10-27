@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(GameState))]
 public class PlayerLifeCounter : MonoBehaviour
 {
-    public GameState GameState;
-
     public Text Text;
     public GameObject FirstLifeIcon;
-    public int NumLifesAtStart = 7;
-
-    public static PlayerLifeCounter Instance;
+    public uint NumLifesAtStart = 7;
 
     private GameObject[] lifeIcons;
 
-    private int numLifesLeft;
+    private uint numLifesLeft;
+
+    private Building[] lifeBuildings;
 
     private void UpdateText()
     {
@@ -22,31 +21,37 @@ public class PlayerLifeCounter : MonoBehaviour
 
     private void Start()
     {
-        Debug.Assert(Instance == null);
-        Instance = this;
-
         lifeIcons = new GameObject[NumLifesAtStart];
         lifeIcons[0] = FirstLifeIcon;
         for (int i=1; i<lifeIcons.Length; ++i)
             lifeIcons[i] = Instantiate(lifeIcons[i-1], lifeIcons[i-1].transform.position + new Vector3(0.28f, 0, 1), Quaternion.identity);
-        Reset();
+
+        lifeBuildings = Object.FindObjectsOfType<Building>();
+        foreach (var building in lifeBuildings)
+            building.OnLifeLostEvent += OnLifeLost;
+
+        Restart();
     }
 
     public void OnLifeLost()
     {
-        if (numLifesLeft <= 0)
+        if (numLifesLeft == 0)
             return;
 
         --numLifesLeft;
         lifeIcons[numLifesLeft].SetActive(false);
         UpdateText();
+        if (numLifesLeft == 0)
+            GetComponent<GameState>().OnLoose();
     }
 
-    public void Reset()
+    public void Restart()
     {
-        numLifesLeft = lifeIcons.Length;
+        numLifesLeft = NumLifesAtStart;
         foreach (var icon in lifeIcons)
             icon.SetActive(true);
+        foreach (var building in lifeBuildings)
+            building.Restart();
         UpdateText();
     }
 }

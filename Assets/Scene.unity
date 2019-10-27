@@ -829,6 +829,7 @@ RectTransform:
   m_Children:
   - {fileID: 854713243}
   - {fileID: 2021044945}
+  - {fileID: 1854776437}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2751,6 +2752,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ea19bc4d-aa0c-488b-9fb7-b37a791db8c7
     m_ActionName: Player/FireMiddle1[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1448724676}
+        m_MethodName: OnContinueButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 57f2f1db-05a0-49c5-b826-f7add7a8cca0
+    m_ActionName: Player/Continue[/Keyboard/space,/Keyboard/enter,/Keyboard/escape,/Mouse/leftButton,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: a31f64bb-6556-40f2-bf6c-23be10cccdb9
@@ -2768,7 +2784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f17b94704aa47643bb426f73aafbb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameState: {fileID: 0}
   Text: {fileID: 854713244}
   FirstLifeIcon: {fileID: 1023450686}
   NumLifesAtStart: 7
@@ -2785,7 +2800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IntroScreen: {fileID: 2021044944}
-  SledSpawner: {fileID: 1448724672}
+  GameOverScreen: {fileID: 1854776436}
 --- !u!1 &1462028287
 GameObject:
   m_ObjectHideFlags: 0
@@ -3985,6 +4000,88 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1854776436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1854776437}
+  - component: {fileID: 1854776439}
+  - component: {fileID: 1854776438}
+  m_Layer: 0
+  m_Name: GameOver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1854776437
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854776436}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99977195, y: 0.99977195, z: 0.99977195}
+  m_Children: []
+  m_Father: {fileID: 428432771}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -107}
+  m_SizeDelta: {x: 1200, y: 600}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1854776438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854776436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 23f8e7e9db3eaab449460d4c1ba61756, type: 3}
+  m_Color: {r: 0.17545734, g: 0.745283, b: 0.13007298, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 23f8e7e9db3eaab449460d4c1ba61756, type: 3}
+    m_FontSize: 58
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 0.79
+  m_Text: 'OH NO!
+
+    TOO MANY PEOPLE ARE HAPPY
+
+
+    <b>GAME OVER</b>'
+--- !u!222 &1854776439
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854776436}
+  m_CullTransparentMesh: 0
 --- !u!1 &1889486443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4464,7 +4561,7 @@ GameObject:
   - component: {fileID: 2021044947}
   - component: {fileID: 2021044946}
   m_Layer: 0
-  m_Name: IntroText
+  m_Name: Intro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4779,11 +4876,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1720800606}
     m_Modifications:
-    - target: {fileID: 8241300877642035313, guid: 8ec171d264aa657489cabe6b638b8a10,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3626790694489596132, guid: 8ec171d264aa657489cabe6b638b8a10,
         type: 3}
       propertyPath: m_Name
@@ -4849,6 +4941,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8241300877642035313, guid: 8ec171d264aa657489cabe6b638b8a10,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec171d264aa657489cabe6b638b8a10, type: 3}
 --- !u!1001 &5069644036271890440
@@ -4858,11 +4955,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3189668404395276985, guid: 1f123d2e60bd5a4499e29a425763db47,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5069644037572745802, guid: 1f123d2e60bd5a4499e29a425763db47,
         type: 3}
       propertyPath: m_Name
@@ -4962,6 +5054,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189668404395276985, guid: 1f123d2e60bd5a4499e29a425763db47,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f123d2e60bd5a4499e29a425763db47, type: 3}

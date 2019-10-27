@@ -1,10 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(SledSpawner))]
+[RequireComponent(typeof(PlayerLifeCounter))]
 public class GameState : MonoBehaviour
 {
     public GameObject IntroScreen;
-    public SledSpawner SledSpawner;
+    public GameObject GameOverScreen;
+
+    private PlayerLifeCounter playerLifeCounter;
+    private SledSpawner sledSpawner;
 
     enum State
     {
@@ -17,27 +22,34 @@ public class GameState : MonoBehaviour
 
     private void Start()
     {
+        playerLifeCounter = GetComponent<PlayerLifeCounter>();
+        sledSpawner = GetComponent<SledSpawner>();
+
         currentState = State.Intro;
         IntroScreen.SetActive(true);
     }
 
-    private void Update()
+    public void OnContinueButtonPressed()
     {
-        switch(currentState)
-        {
-            case State.Intro:
-                if (Keyboard.current.anyKey.wasPressedThisFrame)
-                {
-                    IntroScreen.SetActive(false);
-                    SledSpawner.enabled = true;
-                    currentState = State.Game;
-                }
-                break;
-        }
+        if (currentState == State.Game)
+            return;
+
+        IntroScreen.SetActive(false);
+        GameOverScreen.SetActive(false);
+        playerLifeCounter.Restart();
+        sledSpawner.enabled = true;
+        currentState = State.Game;
+
+        foreach(var present in GameObject.FindGameObjectsWithTag("Present"))
+            GameObject.Destroy(present);
+        foreach(var sled in GameObject.FindGameObjectsWithTag("Sled"))
+            GameObject.Destroy(sled);
     }
 
     public void OnLoose()
     {
-
+        GameOverScreen.SetActive(true);
+        sledSpawner.enabled = false;
+        currentState = State.GameOver;
     }
 }
