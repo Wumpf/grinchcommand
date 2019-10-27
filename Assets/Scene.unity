@@ -5576,13 +5576,10 @@ MonoBehaviour:
     m_LineSpacing: 0.79
   m_Text: 'OH NO!
 
-    TOO MANY PEOPLE ARE HAPPY
-
-    (people, the worst!)
+    MERRY CHRISTMAS
 
 
-    <color=white>GAME
-    OVER</color>'
+    <color=white>GAME OVER</color>'
 --- !u!222 &1854776439
 CanvasRenderer:
   m_ObjectHideFlags: 0
