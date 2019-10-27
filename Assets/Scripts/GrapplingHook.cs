@@ -21,8 +21,19 @@ public class GrapplingHook : MonoBehaviour
     public float MoveSpeed = 10.0f;
     private const float maxHeight = 2.0f;
 
+    private void DestroyAttachedPresents()
+    {
+        for (int i=0; i<transform.childCount; ++i)
+        {
+            var child = transform.GetChild(i);
+            if (child.GetComponent<Present>() != null)
+                GameObject.Destroy(child.gameObject);
+        }
+    }
 
-    void FixedUpdate()
+    private void OnDisable() => DestroyAttachedPresents();
+
+    private void FixedUpdate()
     {
         // Doing this here ensures noone else needs to care about enable order...
         TargetCrosshair.SetActive(state == State.MovingToTarget);
@@ -36,9 +47,11 @@ public class GrapplingHook : MonoBehaviour
             state = State.Retracting;
 
         if (state == State.Retracting &&
-            Vector3.Distance(transform.parent.position, transform.position) < 0.01f)
+            Vector3.Distance(transform.parent.position, transform.position) < 0.02f)
         {
             state = State.Idle;
+            DestroyAttachedPresents();
+            transform.localRotation = Quaternion.identity;
             return;
         }
         if (state == State.Retracting)
@@ -55,9 +68,21 @@ public class GrapplingHook : MonoBehaviour
             targetPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y));
             state = State.MovingToTarget;
 
+            var targetDirection = (targetPos - transform.parent.transform.position);
+            transform.localRotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg - 90.0f);
+
             TargetCrosshair.transform.position = targetPos;
         }
         else if (state == State.MovingToTarget && context.phase == InputActionPhase.Canceled)
             state = State.Retracting;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<Present>() != null)
+        {
+            other.transform.parent = transform;
+            other.rigidbody.simulated = false;
+        }
     }
 }

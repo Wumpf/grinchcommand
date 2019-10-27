@@ -10,11 +10,5 @@ public class GrapplingHookRope : MonoBehaviour
             new Vector3(transform.position.x, transform.position.y, 0.1f),
             new Vector3(transform.parent.position.x, transform.parent.position.y, 0.1f)
         });
-
-        var localPos = transform.localPosition;
-        if (Mathf.Abs(localPos.x) > 0.01f)
-            transform.localRotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(localPos.y, localPos.x) * Mathf.Rad2Deg - 90.0f);
-        else
-            transform.localRotation = Quaternion.identity;
     }
 }
