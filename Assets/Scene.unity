@@ -3959,7 +3959,7 @@ MonoBehaviour:
   AdvanceCodeScreen: {fileID: 1146881771}
   BonusCodeScreen: {fileID: 1751940191}
   AdvanceStage: 2
-  BonusStage: 4
+  BonusStage: 3
   BaseSledSpawnFrequency: 0.1
   SledSpawnFrequencyIncreasePerStage: 0.05
   BasePresentSpawnFrequency: 0.8
