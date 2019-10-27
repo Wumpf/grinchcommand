@@ -14,17 +14,25 @@ public class GrapplingHook : MonoBehaviour
 
     private State state = State.Idle;
 
-    private Vector3 targetDirection;
+    private Vector3 targetPos;
+
+    public GameObject TargetCrosshair;
 
     public float MoveSpeed = 10.0f;
     private const float maxHeight = 2.0f;
 
+
     void FixedUpdate()
     {
+        // Doing this here ensures noone else needs to care about enable order...
+        TargetCrosshair.SetActive(state == State.MovingToTarget);
         if (state == State.Idle)
             return;
 
-        if (transform.position.y > maxHeight)
+        var targetDirection = (targetPos - transform.parent.transform.position).normalized;
+        var currentDirection = (targetPos - transform.position);
+
+        if (transform.position.y > maxHeight || Vector3.Dot(targetDirection, currentDirection) < 0.0f)
             state = State.Retracting;
 
         if (state == State.Retracting &&
@@ -33,7 +41,6 @@ public class GrapplingHook : MonoBehaviour
             state = State.Idle;
             return;
         }
-
         if (state == State.Retracting)
             transform.Translate(-targetDirection * MoveSpeed * Time.fixedDeltaTime, Space.World);
         else
@@ -45,8 +52,10 @@ public class GrapplingHook : MonoBehaviour
         if (state == State.Idle && context.phase == InputActionPhase.Started)
         {
             var mousePos = Mouse.current.position.ReadValue();
-            targetDirection = (Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y)) - transform.parent.position).normalized;
+            targetPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y));
             state = State.MovingToTarget;
+
+            TargetCrosshair.transform.position = targetPos;
         }
         else if (state == State.MovingToTarget && context.phase == InputActionPhase.Canceled)
             state = State.Retracting;
