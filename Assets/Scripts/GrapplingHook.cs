@@ -40,10 +40,7 @@ public class GrapplingHook : MonoBehaviour
         if (state == State.Idle)
             return;
 
-        var targetDirection = (targetPos - transform.parent.transform.position).normalized;
-        var currentDirection = (targetPos - transform.position);
-
-        if (transform.position.y > maxHeight || Vector3.Dot(targetDirection, currentDirection) < 0.0f)
+        if (transform.position.y > maxHeight)
             state = State.Retracting;
 
         if (state == State.Retracting &&
@@ -54,6 +51,8 @@ public class GrapplingHook : MonoBehaviour
             transform.localRotation = Quaternion.identity;
             return;
         }
+
+        var targetDirection = (targetPos - transform.parent.transform.position).normalized;
         if (state == State.Retracting)
             transform.Translate(-targetDirection * MoveSpeed * Time.fixedDeltaTime, Space.World);
         else
@@ -81,6 +80,7 @@ public class GrapplingHook : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Present>() != null)
         {
+            other.gameObject.GetComponent<Present>().enabled = false;
             other.transform.parent = transform;
             other.rigidbody.simulated = false;
         }
