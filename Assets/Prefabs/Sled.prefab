@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4032148271011816208}
   - component: {fileID: 4032148271011816300}
   - component: {fileID: 7870867322606887531}
-  - component: {fileID: 1950209724479414164}
+  - component: {fileID: 5324046665760757116}
   m_Layer: 0
   m_Name: Sled
   m_TagString: Sled
@@ -103,7 +103,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1950209724479414164
+--- !u!95 &5324046665760757116
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ Animator:
   m_GameObject: {fileID: 4032148271011816301}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 252364c4f66856d4a8dbc8929c64d25c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2a667bbee0ea88b4baa461b444cb2557, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
